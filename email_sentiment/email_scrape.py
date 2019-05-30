@@ -38,11 +38,11 @@ df_sent = pd.concat(df_list_sent, axis=0, join='outer').reset_index().rename(col
 
 #%% Export
 
-filepath = r''
+filepath = r'\\svrtcs04\Syndicate Data\Actuarial\Data\Emails\email_sentiment\email_scrape\\'
 
-df_inbox.to_csv(filepath + getpass.getuser() + '_inbox')
+df_inbox.to_csv(filepath + getpass.getuser() + '_inbox' + '.csv')
 
-df_sent.to_csv(filepath + getpass.getuser() + '_sent')
+df_sent.to_csv(filepath + getpass.getuser() + '_sent' + '.csv')
 
 
 
