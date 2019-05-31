@@ -89,7 +89,13 @@ def sender_address(message):
     """
     
     try:
-        sender = message.Sender.Address
+        if message.Class == 43:
+            if message.SenderEmailType == "EX":
+               sender = message.Sender.GetExchangeUser().PrimarySmtpAddress
+            else:
+               sender = message.SenderEmailAddress
+        else:
+            sender = message.Sender.Address
     except:
         sender = ''
     
