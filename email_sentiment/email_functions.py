@@ -91,9 +91,9 @@ def sender_address(message):
     try:
         if message.Class == 43:
             if message.SenderEmailType == "EX":
-               sender = message.Sender.GetExchangeUser().PrimarySmtpAddress
+                sender = message.Sender.GetExchangeUser().PrimarySmtpAddress
             else:
-               sender = message.SenderEmailAddress
+                sender = message.SenderEmailAddress
         else:
             sender = message.Sender.Address
     except:
