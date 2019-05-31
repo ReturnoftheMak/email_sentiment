@@ -130,8 +130,8 @@ def outlook_folder_scrape(folder):
         #message_dict['Body'] = message.body
         #message_dict['Subject'] = message.subject
         message_dict['CreationTime'] = convert_to_datetime(messages[n].CreationTime)
-        message_dict['SentTime'] = convert_to_datetime(message.SentOn)
-        message_dict['LastModificationTime'] = convert_to_datetime(message.LastModificationTime)
+        message_dict['SentTime'] = convert_to_datetime(messages[n].SentOn)
+        message_dict['LastModificationTime'] = convert_to_datetime(messages[n].LastModificationTime)
         message_dict['Recipients'] = recipient_names_and_addresses(messages[n])
         message_dict['SenderName'] = sender_name(messages[n])
         message_dict['SenderAddress'] = sender_address(messages[n])
