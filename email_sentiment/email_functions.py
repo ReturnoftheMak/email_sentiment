@@ -122,22 +122,26 @@ def outlook_folder_scrape(folder):
     # Loop through Folder
     for n in range(len(messages)):
         
-        if n % 100 == 0:
-            print(n)
+        try:
+            if n % 100 == 0:
+                print(n)
+            
+            message_dict = {}
+            
+            #message_dict['Body'] = message.body
+            #message_dict['Subject'] = message.subject
+            message_dict['CreationTime'] = convert_to_datetime(messages[n].CreationTime)
+            message_dict['SentTime'] = convert_to_datetime(messages[n].SentOn)
+            message_dict['LastModificationTime'] = convert_to_datetime(messages[n].LastModificationTime)
+            message_dict['Recipients'] = recipient_names_and_addresses(messages[n])
+            message_dict['SenderName'] = sender_name(messages[n])
+            message_dict['SenderAddress'] = sender_address(messages[n])
+            #message_dict['CountRecipients'] = messages[n].Recipients.Count
+            
+            df_list.append(pd.DataFrame(message_dict))
         
-        message_dict = {}
-        
-        #message_dict['Body'] = message.body
-        #message_dict['Subject'] = message.subject
-        message_dict['CreationTime'] = convert_to_datetime(messages[n].CreationTime)
-        message_dict['SentTime'] = convert_to_datetime(messages[n].SentOn)
-        message_dict['LastModificationTime'] = convert_to_datetime(messages[n].LastModificationTime)
-        message_dict['Recipients'] = recipient_names_and_addresses(messages[n])
-        message_dict['SenderName'] = sender_name(messages[n])
-        message_dict['SenderAddress'] = sender_address(messages[n])
-        #message_dict['CountRecipients'] = messages[n].Recipients.Count
-        
-        df_list.append(pd.DataFrame(message_dict))
+        except:
+            pass
         
     return df_list
 
