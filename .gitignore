@@ -103,3 +103,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 email_sentiment/CG/email_scrape_CG.py
+email_sentiment/CG/next.py
