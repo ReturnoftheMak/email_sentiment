@@ -66,6 +66,7 @@ df_all['SenderName'] = df_allMerge['CleanName']
 #Fudge
 df_all['SenderName'] = df_all['SenderName'].str[-20:]
 
+
 #%% Draw network
 
 A = nx.Graph()
@@ -77,7 +78,7 @@ tuples = [tuple(x) for x in df_all.values]
 A.add_weighted_edges_from(tuples)
 
 
-#%%
+#%% Draw spring diagram
 
 fig = plt.figure(figsize=(30, 30))
 ax = plt.subplot(111)
@@ -87,8 +88,7 @@ ax.set_title('Dependencies', fontsize=18)
 nx.draw_spring(A, arrows=False, with_labels=True, alpha=0.7, width=0.5, font_size=15)
 
 
-#%%
-
+#%% Save plot
 
 plt.tight_layout()
 plt.savefig(r"\\svrtcs04\Syndicate Data\Actuarial\Data\Emails\email_sentiment\email_sentiment\Graph4.png", format="PNG")
