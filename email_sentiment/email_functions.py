@@ -102,10 +102,10 @@ def sender_address(message):
     return sender
 
 
-#%%
+#%% Top level folder scrape
 
 def outlook_folder_scrape(folder):
-    """ Converts from win32com format to a list of dictionaries
+    """ Converts from win32com format to a list of dataframes
 
     Args:
         arg1 folder (win32com.client.CDispatch): It should be noted that
@@ -144,4 +144,56 @@ def outlook_folder_scrape(folder):
         except:
             pass
 
+    return df_list
+
+
+#%% Subfolder scrape
+
+def outlook_subfolder_scrape(folder):
+    """ Converts from win32com format to a list of dataframes
+
+    Args:
+        arg1 folder (win32com.client.CDispatch): It should be noted that
+        this is specifically a default folder, not Items within
+
+    Returns:
+        List of Dataframes
+    """
+    
+    # Initialise List
+    df_list = []
+    
+    for x in range(100):
+        
+        try:
+            messages = folder.Folders[x].Items
+            
+            # Loop through subfolder
+            for n in range(len(messages)):
+        
+                try:
+                    if n % 100 == 0:
+                        print(n)
+        
+                    message_dict = {}
+        
+                    #message_dict['Body'] = message.body
+                    #message_dict['Subject'] = message.subject
+                    message_dict['CreationTime'] = convert_to_datetime(messages[n].CreationTime)
+                    message_dict['SentTime'] = convert_to_datetime(messages[n].SentOn)
+                    message_dict['LastModificationTime'] = convert_to_datetime(messages[n].LastModificationTime)
+                    message_dict['Recipients'] = recipient_names_and_addresses(messages[n])
+                    message_dict['SenderName'] = sender_name(messages[n])
+                    message_dict['SenderAddress'] = sender_address(messages[n])
+                    #message_dict['CountRecipients'] = messages[n].Recipients.Count
+        
+                    df_list.append(pd.DataFrame(message_dict))
+        
+                except:
+                    pass
+
+                
+        except:
+            break
+    
     return df_list
