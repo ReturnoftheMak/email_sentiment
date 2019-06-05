@@ -163,10 +163,10 @@ def outlook_subfolder_scrape(folder):
     # Initialise List
     df_list = []
     
-    for x in range(100):
+    for folder in find_all_subfolders(folder):
         
         try:
-            messages = folder.Folders[x].Items
+            messages = folder.Items
             
             # Loop through subfolder
             for n in range(len(messages)):
@@ -197,3 +197,46 @@ def outlook_subfolder_scrape(folder):
             break
     
     return df_list
+
+
+#%% Iterate through all possible folders
+
+def find_all_subfolders(folder):
+    """ Given a folder, find all subfolders
+    
+    Args:
+        arg1 folder (): xxx
+    
+    Returns:
+        list of subfolders?
+    """
+    
+    # Initialise list
+    folder_list = []
+    
+    # Loop through top level folders
+    for top_level in folder.Folders:
+        
+        folder_list.append(top_level)
+        
+        # Check for next level
+        for second_level in top_level.Folders:
+            
+            folder_list.append(second_level)
+            
+            # 3rd set of subs
+            for third_level in second_level.Folders:
+            
+                folder_list.append(third_level)
+                
+                # 4th level
+                for fourth_level in third_level.Folders:
+                    
+                    folder_list.append(fourth_level)
+                    
+                    # 5th level
+                    for fifth_level in fourth_level.Folders:
+                    
+                        folder_list.append(fifth_level)
+    
+    return folder_list

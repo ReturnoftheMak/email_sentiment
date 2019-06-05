@@ -13,7 +13,6 @@ import win32com.client
 from email_functions import outlook_folder_scrape, outlook_subfolder_scrape
 
 
-
 #%% Initial Setup
 
 outlook = win32com.client.Dispatch("Outlook.Application").GetNamespace("MAPI")
