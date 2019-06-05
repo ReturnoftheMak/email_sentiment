@@ -106,3 +106,6 @@ email_sentiment/CG/email_scrape_CG.py
 email_sentiment/CG/next.py
 email_sentiment/Thumbs.db
 email_sentiment/Thumbs.db
+*.twb
+*.db
+*.twbr
