@@ -102,6 +102,3 @@ nx.draw_spring(A, arrows=False, with_labels=True, alpha=0.7, width=0.5, font_siz
 plt.tight_layout()
 plt.savefig(r"\\svrtcs04\Syndicate Data\Actuarial\Data\Emails\email_sentiment\email_sentiment\Graph4.png", format="PNG")
 plt.show()
-
-
-
