@@ -109,3 +109,4 @@ email_sentiment/Thumbs.db
 *.twb
 *.db
 *.twbr
+email_sentiment/combined.csv
