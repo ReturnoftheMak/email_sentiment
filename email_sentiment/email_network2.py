@@ -20,6 +20,12 @@ InpathMak = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Makhan.Gill_
 InpathCarly = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\carly.perry_inbox.csv'
 InpathGrace = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Grace.Owens_inbox.csv'
 
+InSpathChris = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Chris.Gallagher_inboxsub.csv'
+InSpathMatt = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Matthew.Rout_inboxsub.csv'
+InSpathMak = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Makhan.Gill_inboxsub.csv'
+InSpathCarly = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\carly.perry_inboxsub.csv'
+InSpathGrace = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Grace.Owens_inboxsub.csv'
+
 SentpathChris = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Chris.Gallagher_sent.csv'
 SentpathMatt = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Matthew.Rout_sent.csv'
 SentpathMak = r'M:\Actuarial\Data\Emails\email_sentiment\email_scrape\Makhan.Gill_sent.csv'
@@ -39,7 +45,10 @@ Inboxes = [InpathChris,
            InpathMatt,
            InpathMak,
            InpathCarly,
-           InpathGrace]
+           InpathGrace,
+           InSpathChris,
+           InSpathMak,
+           InSpathCarly]
 
 df_list = [pd.read_csv(inbox) for inbox in Inboxes]
 
